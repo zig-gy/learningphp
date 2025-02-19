@@ -1,5 +1,7 @@
 <?php
-const API_URL = 'https://whenisthenextmcufilm.com/api';
+
+declare(strict_types=1);
+require_once('globals.php');
 
 #Inicializar curl handler
 $curlHandler = curl_init(API_URL);
@@ -33,6 +35,7 @@ $tipo = $data["type"];
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
+  <link rel="stylesheet" href="styles.css">
   <title>Document</title>
 </head>
 
@@ -48,15 +51,3 @@ $tipo = $data["type"];
 
 
 </html>
-
-<style>
-  :root {
-    color-scheme: dark;
-    text-align: center;
-  }
-
-  body {
-    display: grid;
-    place-content: center;
-  }
-</style>
