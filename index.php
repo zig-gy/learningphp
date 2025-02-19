@@ -2,26 +2,11 @@
 
 declare(strict_types=1);
 require_once('globals.php');
+require_once 'functions.php';
+require_once 'classes/next_movie.php';
 
-#Inicializar curl handler
-$curlHandler = curl_init(API_URL);
-//Indicamos que queremos recibir el resultado y no mostrarla en pantalla
-curl_setopt($curlHandler, CURLOPT_RETURNTRANSFER, true);
-/*Ejecutamops la peticion y
-guardamos el resultado
-*/
-$result = curl_exec($curlHandler);
-$data = json_decode($result, true);
-curl_close($curlHandler);
-
-//$result = file_get_contents(API_URL);
-
-//var_dump($result);
-
-$nombre = $data["title"];
-$fecha = $data["release_date"];
-$poster = $data["poster_url"];
-$tipo = $data["type"];
+$movie = NextMovie::fetch_and_create_movie(API_URL);
+$data = $movie->get_data();
 
 ?>
 
@@ -40,13 +25,9 @@ $tipo = $data["type"];
 </head>
 
 <body>
-  <main>
-    <a href="functions.php">Segunda pagina</a>
-    <h1><?= "$nombre" ?></h1>
-    <h3><?= "Fecha de salida: $fecha" ?></h3>
-    <p><?= "Tipo: $tipo" ?></p>
-    <img src=<?= $poster ?> alt="Poster de la pelicula" width="300" style="border-radius: 16px;">
-  </main>
+  <?php
+  render('main', array_merge($data, ['until_message' => $movie->generate_days_message()]));
+  ?>
 </body>
 
 
