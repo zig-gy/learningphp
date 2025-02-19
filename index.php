@@ -38,6 +38,7 @@ $tipo = $data["type"];
 
 <body>
   <main>
+    <a href="functions.php">Segunda pagina</a>
     <h1><?= "$nombre" ?></h1>
     <h3><?= "Fecha de salida: $fecha" ?></h3>
     <p><?= "Tipo: $tipo" ?></p>
