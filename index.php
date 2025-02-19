@@ -21,7 +21,7 @@ $data = $movie->get_data();
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
   <link rel="stylesheet" href="styles.css">
-  <title>Document</title>
+  <title>Marvel movie</title>
 </head>
 
 <body>
